@@ -1,0 +1,154 @@
+<?xml version='1.0' standalone='yes' ?>
+<LVData xmlns="http://www.ni.com/LVData">
+<Version>20.0</Version>
+<Cluster>
+<Name>AFPS Parameters</Name>
+<NumElts>34</NumElts>
+<U8>
+<Name>PUMP_ID_AMINO</Name>
+<Val>3</Val>
+</U8>
+<U8>
+<Name>PUMP_ID_DIEA</Name>
+<Val>2</Val>
+</U8>
+<U8>
+<Name>PUMP_ID_ACT</Name>
+<Val>1</Val>
+</U8>
+<U8>
+<Name>VALVE_ID_HX</Name>
+<Val>8</Val>
+</U8>
+<U8>
+<Name>VALVE_ID_ACT</Name>
+<Val>1</Val>
+</U8>
+<U8>
+<Name>VALVE_ID_PIP</Name>
+<Val>1</Val>
+</U8>
+<U8>
+<Name>VALVE_ID_MASTER</Name>
+<Val>4</Val>
+</U8>
+<U8>
+<Name>VALVE_ID_DIEA</Name>
+<Val>7</Val>
+</U8>
+<U8>
+<Name>VALVE_POS_DMF_ALL</Name>
+<Val>10</Val>
+</U8>
+<U8>
+<Name>VALVE_POS_DEPRO_MASTER</Name>
+<Val>4</Val>
+</U8>
+<U8>
+<Name>VALVE_POS_PIP</Name>
+<Val>9</Val>
+</U8>
+<U8>
+<Name>VALVE_POS_DIEA</Name>
+<Val>1</Val>
+</U8>
+<U8>
+<Name>VALVE_POS_DIEA_DMF</Name>
+<Val>10</Val>
+</U8>
+<Refnum>
+<Name>COM Port :: Heaters</Name>
+<RefKind>VISA</RefKind>
+<Val>COM6</Val>
+</Refnum>
+<Refnum>
+<Name>COM Port :: Valves</Name>
+<RefKind>VISA</RefKind>
+<Val>COM5</Val>
+</Refnum>
+<Refnum>
+<Name>COM Port :: Pumps</Name>
+<RefKind>VISA</RefKind>
+<Val>COM7</Val>
+</Refnum>
+<U32>
+<Name>Machine No</Name>
+<Val>80</Val>
+</U32>
+<U32>
+<Name>Peptide Serial No</Name>
+<Val>910</Val>
+</U32>
+<U32>
+<Name>DELAY_POS_VALVE</Name>
+<Val>300</Val>
+</U32>
+<U32>
+<Name>DELAY_RTN_PUMP</Name>
+<Val>300</Val>
+</U32>
+<U32>
+<Name>DELAY_TINYG</Name>
+<Val>10000</Val>
+</U32>
+<DBL>
+<Name>PIP_LEVEL_ML</Name>
+<Val>-3303.41091666663305</Val>
+</DBL>
+<DBL>
+<Name>DMF_LEVEL_ML</Name>
+<Val>-68967.28370833458020</Val>
+</DBL>
+<DBL>
+<Name>DIEA_LEVEL_ML</Name>
+<Val>-164.73780000000079</Val>
+</DBL>
+<DBL>
+<Name>WASTE_LEVEL_ML</Name>
+<Val>93539.07917499855090</Val>
+</DBL>
+<U8>
+<Name>VALVE_POS_MASTER_PLUG</Name>
+<Val>4</Val>
+</U8>
+<Refnum>
+<Name>COM Port :: TinyG</Name>
+<RefKind>VISA</RefKind>
+<Val>COM3</Val>
+</Refnum>
+<String>
+<Name>ADAM6015::IP Address</Name>
+<Val>192.168.1.51</Val>
+</String>
+<DBL>
+<Name>AMINO
+Pump Head Size (mL/min)</Name>
+<Val>50.00000000000000</Val>
+</DBL>
+<DBL>
+<Name>Amino
+Pump Vol (mL)/Stroke</Name>
+<Val>0.39867900000000</Val>
+</DBL>
+<DBL>
+<Name>DIEA
+Pump Head Size (mL/min)</Name>
+<Val>5.00000000000000</Val>
+</DBL>
+<DBL>
+<Name>DIEA
+Pump Vol (mL)/Stroke</Name>
+<Val>3.92390000000000E-2</Val>
+</DBL>
+<DBL>
+<Name>ACT
+Pump Head Size (mL/min)</Name>
+<Val>50.00000000000000</Val>
+</DBL>
+<DBL>
+<Name>ACT
+Pump Vol (mL)/Stroke</Name>
+<Val>0.39867900000000</Val>
+</DBL>
+</Cluster>
+</LVData>
