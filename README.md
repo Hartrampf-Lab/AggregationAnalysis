@@ -18,6 +18,6 @@ In order to be able to use the environement kernel on jupyter notebook, run the 
 conda activate dataanalysis
 python -m ipykernel install --user --name dataanalysis
 ```
-<br>
+
 ## Usage
 ...
