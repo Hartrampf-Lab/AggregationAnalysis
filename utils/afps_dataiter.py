@@ -172,11 +172,9 @@ class Synthesis:
         "Parse the afps datafile, returning a list of dictionaries containing each timepont's data"
         with open(self.datafile) as csvfile:
             csvreader = csv.reader(csvfile)
-            
             next(csvreader,None)
             sequence = ''.join(next(csvreader)).split(": ")[1]
 
-            
             for i in range(3):
                 if i == 0:
                     self.resinmass = next(csvreader,None)
@@ -201,11 +199,8 @@ class Synthesis:
                 mins = int(row['TIME_HHMMSSS.SSS'][2:4])
                 secs = int(row['TIME_HHMMSSS.SSS'][4:6])
                 ms = int(row['TIME_HHMMSSS.SSS'][7:10])
-                
                 float_ms = float(hrs*60*60*1000 + mins*60*1000 + secs*1000 + ms)
-                
                 row['TIME_MS'] = float_ms
-            
             return afps_data
     
     @staticmethod
@@ -444,23 +439,18 @@ class Synthesis:
     def clean_up(self):
         """this function is used to collect the sequence length, number of deprotections, synthesis file name, n. of steps and the resin mass. These metadata are used by the full_data_converter program to make decision whether to include or exclude a particular sequence into the converted dataset."""
         return len(self.detect_depro_steps()), len(self.sequence), self.notenum, self.stepnum, self.resinmass 
-        
-
+    
     def integrate(self, peak):
-        # Performs the riemann sum underneath the given curve with format [*[time,data]]. Returns area, FWHM, max.
+        # Performs the riemann sum underneath the given curve with format [*[time,data]].
         # Sort the data by time
         peak.sort(key=lambda x: x[0])
-        
-        # Iterate over the list and compute the sum
-        sum = 0
-        for index in range(len(peak)):
-            if index == 0:
-                pass
-            else:
-                dt = peak[index][0] - peak[index-1][0]
-                avg_uv = (peak[index][1] + peak[index-1][1]) / 2 #midpoint rule
-                sum += dt * avg_uv
-        return sum
+        peak = np.array(peak)
+        #Vectorization speeds up computation
+        dt = peak[1:,0] - peak[:-1,0]
+        avg_uv = (peak[1:,1] + peak[:-1,1]) / 2 #midpoint rule
+        area = dt * avg_uv
+        integral = np.sum(area)
+        return integral
 
     def get_max(self, peak):
         time,uv = zip(*peak)
@@ -480,6 +470,20 @@ class Synthesis:
         if width == 0:
             print('Warning: Peak width 0')
         return maximum, width
+    
+    def get_arclength(self, peak):
+        """
+        This method calculates the distance between each subsequent pair of points
+        using the pythagorean equation: c**2 = a**2 + b**2
+        """
+        # Sort the data by time
+        peak.sort(key=lambda x: x[0])
+        peak = np.array(peak)
+        dt = peak[1:,0] - peak[:-1,0]
+        dy = (peak[1:,1] - peak[:-1,1])*10**6
+        length =  np.sqrt(dt**2+dy**2)
+        arclength = np.sum(length)
+        return arclength
     
     @staticmethod
     def split_peak(df, threshold):
@@ -648,7 +652,7 @@ class Synthesis:
                 maximum,width = self.get_max(peak)
                 if index == 0:
                     p_front[0] = p_tail[0] = maximum * 1000 #improving estimate of the initial guess. this corresponds to the amplitude. 
-                angle, angle_front, angle_tail, asymm, par_front, par_tail = self.get_angle(peak,p_front, p_tail,threshold=0.95)
+                angle, angle_front, angle_tail, asymm, params_front, params_tail = self.get_angle(peak,p_front, p_tail,threshold=0.95)
             except Exception:
                 peak = [ [i[1], i[2]] for i in corrected_uv_data if i[0] == step-3] #i[1] is time and i[2] is uv data, while i[0] is the step number.
                 peak.extend([ [i[1], i[2]] for i in corrected_uv_data if i[0] == step-2])
@@ -657,7 +661,7 @@ class Synthesis:
                 maximum,width = self.get_max(peak)
                 if index == 0:
                     p_front[0] = p_tail[0] = maximum * 1000 #improving estimate of the initial guess. this corresponds to the amplitude. 
-                angle, angle_front, angle_tail, asymm, par_front, par_tail = self.get_angle(peak,p_front, p_tail,threshold=0.95)
+                angle, angle_front, angle_tail, asymm, params_front, params_tail = self.get_angle(peak,p_front, p_tail,threshold=0.95)
             angle_mass_norm = 180 - (standard_mass/resinmass) * (180-angle) 
             integral = self.integrate(peak)
     
