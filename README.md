@@ -4,7 +4,7 @@ It contains the code which implements the methods and concepts introduced in our
 <br>
 **A robust analytical method to investigate sequence dependence in flow-based peptide synthesis** 
 <br>
-(doi:) 
+(doi: tba) 
 <br>
 ## Conda environment
 A conda environment YML file is included in order to successfully run the code.
