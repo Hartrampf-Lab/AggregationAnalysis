@@ -326,58 +326,6 @@ class AggregationFinder:
                                     local_params["sigmoid_d"].values)
         fig, (ax1,ax2) = plt.subplots(2, 1, figsize=(7,5))
         ax1.set_title(f"Sequence {sn}")
-        ax1.plot(x, local_df[f"{self.param} trimmed"], label=f"{self.param} trimmed", c="olivedrab")
-        ax1.plot(x, local_df[self.param], label=self.param, c=self.stdred)
-        ax1.plot(x_s, sigmoid_pred, label="Sigmoid Fit", c=self.stdblue)
-        ax1.set_ylabel(f"{self.param}")
-        ax1.set_xlabel("Residue Index")
-        ax1.axvline(x=float(local_params["aggregation_index"]), color=self.stdbrown, linestyle="--")
-        if float(local_params["sigmoid index"]) > 0 and float(local_params["sigmoid index"]) < len(local_df):
-            ax1.axvline(x=float(local_params["sigmoid index"]), color=self.stdyellow, linestyle=":", label="Sigmoid aggregation")
-        ax1.set_ylim(min(local_df[self.param])-0.5, max(local_df[self.param])+0.5)
-        ax1.legend(frameon=False)
-
-        ax2.plot(x, local_df[f"{self.param} Slope"], label=f"Cumulative slope of sn: {sn}", c=self.stdblue)
-        ax2.set_ylabel(f"Cumulative {self.param} Slope")
-        ax2.set_xlabel("Residue Index")
-        ax2.axvline(x=float(local_params["aggregation_index"]), color=self.stdbrown, linestyle="--", label="Aggregation index")
-        ax2.set_ylim(min(local_df[f"{self.param} Slope"])-0.5, max(local_df[f"{self.param} Slope"])+0.5)
-        ax2.legend(frameon=False)
-        plt.tight_layout()
-        
-
-        if float(local_params["sigmoid index"]) > 0 and float(local_params["sigmoid index"]) < len(local_df):
-            over = ''
-        else:
-            over = '(out of range)'
-
-        print(f"\nCumulative Slope Aggregation Prediction:\nIndex of aggregation = {float(local_params['aggregation_index'])}\nMagnitude of aggregation = {float(local_params['normalized_gradient']):0.2f}\n\nSigmoid Aggregation Prediction:\nx-value of inflection point = {float(local_params['sigmoid index']):0.2f}\t   {over}\nAmplitude of sigmoid = {float(local_params['sigmoid_a']):0.2f}\t  (magnitude of aggregation)\nGradient at inflection point = {float(local_params['sigmoid_d']):0.2f}\nR2 = {float(local_params['r2']):0.4f}")
-
-        if save != None:
-            plt.savefig(save) #best if saved as pdf
-        plt.show()
-
-    def plot_aggregation_for_paper(self, sn, save=None):
-        if sn not in self.df["serial_n"].unique() or type(sn) != int:
-            print("The serial number passed is not valid or doesn't exist")
-            raise InvalidSerialNumber
-        local_df = self.df.query(f"serial_n == {sn}")
-        if len(self.aggregation) > 1:
-            local_params = self.aggregation.query(f"serial_n == {sn}")
-        else:
-            local_params = self.aggregation
-        local_df["index"] = list(range(len(local_df)))
-        local_df = local_df.set_index("index")
-        local_params["sigmoid index"] = local_params["sigmoid_b"] / local_params["sigmoid_d"]
-        x = np.linspace(0, len(local_df)-1, len(local_df))
-        x_s = np.linspace(0, len(local_df)-1, 1000)
-        sigmoid_pred = self.sigmoid(x_s, 
-                                    local_params["sigmoid_a"].values, 
-                                    local_params["sigmoid_b"].values, 
-                                    local_params["sigmoid_c"].values, 
-                                    local_params["sigmoid_d"].values)
-        fig, (ax1,ax2) = plt.subplots(2, 1, figsize=(7,5))
-        ax1.set_title(f"Sequence {sn}")
         
         ax1.plot(x, local_df[self.param], label=self.param, c="grey", alpha=0.5)
         ax1.plot(x, local_df[f"{self.param} trimmed"], label=f"{self.param} trimmed", c="black")

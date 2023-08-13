@@ -159,7 +159,7 @@ class SynthesisPlotter():
 
         plt.figure()
         for n  in sn:
-            plt.plot(combined.query(f"serial_n == {n}")["AA number"], combined.query(f"serial_n == {n}")[param],label=f"{sn}: {serial[n]}")
+            plt.plot(combined.query(f"serial_n == {n}")["AA number"], combined.query(f"serial_n == {n}")[param],label=f"{n}: {serial[n]}")
         plt.ylabel(param)
         plt.legend(frameon=False, loc="best")
         if save != None:
