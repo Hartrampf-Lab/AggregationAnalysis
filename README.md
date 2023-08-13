@@ -2,6 +2,7 @@
 Aggregation Analysis is a tool for investigating and detecting aggregation for the Automated Fast-Flow Peptide Synthesiser. 
 It contains the code which implements the methods and concepts introduced in our paper:
 <br>
+<br>
 **A robust analytical method to investigate sequence dependence in flow-based peptide synthesis** 
 <br>
 (doi: tba) 
