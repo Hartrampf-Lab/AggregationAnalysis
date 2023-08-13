@@ -290,7 +290,7 @@ class Synthesis:
         plt.legend()
         plt.show()
     
-    def plot_depro_temp(self): #lets check how stable the T is between deprotection steps
+    def plot_depro_temp_all_sensors(self): #lets check how stable the T is between deprotection steps
         try:            
             time, T_1, T_2, T_3, T_4, T_5, T_6, step = zip(*((row['TIME_MS'], row["TC_1"], row["TC_2"], row["TC_3"], row["TC_4"], row["TC_5"], row["TC_6"], row['STEP_NO']) for row in self.all_depro_data))#select and assign the columns of interest
         except KeyError:
