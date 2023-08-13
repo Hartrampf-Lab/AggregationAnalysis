@@ -21,4 +21,8 @@ python -m ipykernel install --user --name dataanalysis
 ```
 
 ## Usage
+
+## Requirements
+* <a href='https://www.python.org/downloads/release/python-370/'>Python 3.11</a>
+* <a href='https://www.rdkit.org/'>RDKit </a>
 ...
