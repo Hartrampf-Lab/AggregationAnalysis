@@ -262,8 +262,8 @@ aggregation factor and compared the similarity of the plots to the
 original analysis using R<sup>2</sup>. An example for this can be seen
 in **Figure S1** at approximately 50% oversaturation.
 
-<img src="attachment:media/image1.png" style="width:3.11667in;height:0.975in" alt="A black and white screen Description automatically generated" />
-<img src="attachment:media/image2.png" style="width:3.10833in;height:0.975in" alt="A line drawing of a graph Description automatically generated" />
+![alt text]([https://github.com/[username]/[reponame]/blob/[main]/image.jpg](https://github.com/Hartrampf-Lab/AggregationAnalysis/edit/main/plots/artificial_oversaturation.png)?raw=true)
+![alt text]([https://github.com/[username]/[reponame]/blob/[main]/image.jpg](https://github.com/Hartrampf-Lab/AggregationAnalysis/edit/main/plots/oversaturation_PA_AF_trace.png)?raw=true)
 
 **Figure S1**: A) An example for the artificially generated
 oversaturated plot at the UV absorption value of 0.4, which corresponds
