@@ -20,7 +20,8 @@ conda activate dataanalysis
 python -m ipykernel install --user --name dataanalysis
 ```
 
-## Usage
+## Description of the data processing and analysis method.
+The description is taken from the supporting information of the paper "A robust analytical method to investigate sequence dependence in flow-based peptide synthesis", which can be found on doi.org....
 The repository is composed of four python scripts: The main script
 (**afps_dataiter.py**) iterates through the files containing the
 synthesis data (.pep files) and extracts the synthesis data. The output
