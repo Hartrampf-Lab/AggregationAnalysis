@@ -190,31 +190,6 @@ The afps_dataiter script, more specifically the parts performing the
 parsing of the .pep files were adapted from the
 literature.<sup>SI1,2</sup>
 
-###  **Loading determination**
-
-Using the areas of the deprotection peaks, the loading of the solid
-support can be determined. Loading, *L*, is defined as mmol of binding
-points, *n*, per mass unit of resin, *m*. In most techniques to
-determine the loading, the number of binding points are approximated
-with the amount of Fmoc removed after the first coupling. Using this
-assumption, the determination is done using the following formula:
-
-$$L = \frac{n}{m}\ $$
-
-$$n = \ \dot{V}\int_{t_{\text{start}}}^{t_{\text{end}}}c\text{dt}$$
-
-$$A = l\varepsilon c$$
-
-Combining these formulas results in:
-
-$$L = \ \frac{\dot{V}}{\text{mlε}}\int_{t_{\text{start}}}^{t_{\text{end}}}A\text{dt}$$
-
-In this final equation $\dot{V}$ stands for flowrate, *l* for part
-length in the flow cell of the UV-detector, ε is the extinction
-coefficient of the deprotection solution and the integral of the
-absorption (*A*) over time is the area of the peak. Using this simple
-formula, we can automatically determine the loading of the resins with
-ease, eliminating the cumbersome extra step its measurement required.
 
 ### **Deletion Computation using peak integrals**
 
@@ -251,17 +226,7 @@ permute_sequence method iterates enumerates the deletion permutations by
 calling the convert_to_binary_with_leading_zeros and the compute_mass
 calculates the mass for every deletion permutation.
 
-### **Comparison of the efficiency of data analytical methods for oversaturated signals** 
 
-To investigate the capability of the data analytical methods in
-capturing aggregation in signals that have oversaturated peaks we
-generated the oversaturation *in silico*. Taking the standard synthesis
-(150 mg, normal loading, barstar\[75–90\] synthesis) we gradually cut
-down the signal. Once the value of the cutting down reached the tallest
-peak, that is where oversaturation was considered 0%. For every value of
-oversaturation, we analyzed the traces using both the peak angle and
-aggregation factor and compared the similarity of the plots to the
-original analysis using R<sup>2</sup>.
 
 ## Requirements
 * <a href='https://www.python.org/downloads/release/python-3110/'>Python 3.11</a>
