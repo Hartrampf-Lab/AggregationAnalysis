@@ -24,5 +24,5 @@ python -m ipykernel install --user --name dataanalysis
 
 ## Requirements
 * <a href='https://www.python.org/downloads/release/python-3110/'>Python 3.11</a>
-* <a href='https://www.rdkit.org/'>RDKit </a>
+* <a href='https://www.rdkit.org/'>RDKit</a>
 
