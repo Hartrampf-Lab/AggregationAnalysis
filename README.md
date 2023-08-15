@@ -275,15 +275,6 @@ plotting the R2 we can compare the capability of the two methods in
 handling oversaturation
 ](https://github.com/Hartrampf-Lab/AggregationAnalysis/edit/main/plots/oversaturation_PA_AF_trace.png?raw=true)
 
-**Figure S1**: A) An example for the artificially generated
-oversaturated plot at the UV absorption value of 0.4, which corresponds
-to an approximate 50% oversaturation, compared to the original plot
-**B)** The analysis of the oversaturated plot using both peak angle and
-aggregation factor. It is clearly visible that while peak angle
-maintains its characteristics and covers the aggregation point
-accurately aggregation factor loses accuracy. By calculating and
-plotting the R2 we can compare the capability of the two methods in
-handling oversaturation
 
 ## Requirements
 * <a href='https://www.python.org/downloads/release/python-3110/'>Python 3.11</a>
