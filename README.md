@@ -261,23 +261,7 @@ down the signal. Once the value of the cutting down reached the tallest
 peak, that is where oversaturation was considered 0%. For every value of
 oversaturation, we analyzed the traces using both the peak angle and
 aggregation factor and compared the similarity of the plots to the
-original analysis using R<sup>2</sup>. An example for this can be seen
-in **Figure S1** at approximately 50% oversaturation.
-
-![**Figure S1A)** An example for the artificially generated
-oversaturated plot at the UV absorption value of 0.4, which corresponds
-to an approximate 50% oversaturation, compared to the original plot]
-<img src="https://github.com/Hartrampf-Lab/AggregationAnalysis/edit/main/plots/artificial_oversaturation.png" width="100%" height="100%"><br>
-
-
-![**Figure S1B)** The analysis of the oversaturated plot using both peak angle and
-aggregation factor. It is clearly visible that while peak angle
-maintains its characteristics and covers the aggregation point
-accurately aggregation factor loses accuracy. By calculating and
-plotting the R2 we can compare the capability of the two methods in
-handling oversaturation
-](https://github.com/Hartrampf-Lab/AggregationAnalysis/edit/main/plots/oversaturation_PA_AF_trace.png?raw=true)
-
+original analysis using R<sup>2</sup>.
 
 ## Requirements
 * <a href='https://www.python.org/downloads/release/python-3110/'>Python 3.11</a>
