@@ -266,7 +266,10 @@ in **Figure S1** at approximately 50% oversaturation.
 
 ![**Figure S1A)** An example for the artificially generated
 oversaturated plot at the UV absorption value of 0.4, which corresponds
-to an approximate 50% oversaturation, compared to the original plot](https://github.com/Hartrampf-Lab/AggregationAnalysis/edit/main/plots/artificial_oversaturation.png?raw=true)
+to an approximate 50% oversaturation, compared to the original plot]
+<img src="https://github.com/Hartrampf-Lab/AggregationAnalysis/edit/main/plots/artificial_oversaturation.png" width="100%" height="100%"><br>
+
+
 ![**Figure S1B)** The analysis of the oversaturated plot using both peak angle and
 aggregation factor. It is clearly visible that while peak angle
 maintains its characteristics and covers the aggregation point
