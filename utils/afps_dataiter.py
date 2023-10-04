@@ -412,18 +412,18 @@ class Synthesis:
     def correct_uv_baseline(self, order=3):
         "Returns a baseline corrected UV trace. Requires peakutils and numpy."
         try:
-            time, step_no, numpy_uv = np.array(self.get_data('TIME_MS', 'STEP_NO', 'UV_VIS'))
+            time, step_no, numpy_uv, flow_rate = np.array(self.get_data('TIME_MS', 'STEP_NO', 'UV_VIS', 'PUMP_2_CMD'))
         except KeyError:
-            time, step_no, numpy_uv = np.array(self.get_data('TIME_MS', 'STEP_NO', 'UV-VIS'))
+            time, step_no, numpy_uv, flow_rate = np.array(self.get_data('TIME_MS', 'STEP_NO', 'UV-VIS', 'PUMP_2_CMD'))
         baseline = peakutils.baseline(numpy_uv, order)
         numpy_uv_corrected = numpy_uv - baseline
-        return list(zip(step_no, time, numpy_uv_corrected))
+        return list(zip(step_no, time, numpy_uv_corrected, flow_rate))
     
     def detect_depro_steps(self):
         # Parse out UV peaks by step number. 42, 64, 88....
-        first_depro_step = 35
+        self.first_depro_step = 35
         depro_step_lag = 22
-        self.all_depro_data = [row for row in self.afps_data if (row['STEP_NO']-first_depro_step) % depro_step_lag == 0 and row['STEP_NO'] >= first_depro_step] #define 22, 35 as a variable
+        self.all_depro_data = [row for row in self.afps_data if (row['STEP_NO']-self.first_depro_step) % depro_step_lag == 0 and row['STEP_NO'] >= self.first_depro_step] #define 22, 35 as a variable
 
         # Create a set of all unique step numbers captured here (one for each deprotection peak)
         depro_steps = {row['STEP_NO'] for row in self.all_depro_data}
@@ -484,6 +484,17 @@ class Synthesis:
         length =  np.sqrt(dt**2+dy**2)
         arclength = np.sum(length)
         return arclength
+
+    def get_loading(self):
+        """ This method calculates the loading of the resin in mmol/g. It takes the area under the first peak in AU ms, the flow rate in uL/min and the mass of the resin in mg as input. """
+        ext_coef = 5253 # M-1 cm-1
+        path_length = 0.03 # cm
+        area = self.area_for_loading
+        flow_rate = np.mean(self.flow_rate_for_loading)
+        mass = float(self.resinmass[0].split("RESIN AMOUNT [mg]:")[1]) #mg
+        flow_rate *= ((10**-3)/60) #convert uL/min to mL/s
+        loading = (area*flow_rate)/(path_length*mass*ext_coef) # mmol/g
+        return loading
     
     @staticmethod
     def split_peak(df, threshold):
@@ -639,6 +650,8 @@ class Synthesis:
         resinmass = float(self.resinmass[0].split("RESIN AMOUNT [mg]:")[1]) #mg
         standard_mass = 150 #mg
         extension = 0.3
+        self.flow_rate_for_loading = [[i[3]] for i in corrected_uv_data if i[0] == self.first_depro_step] #the flow rate of the first deprotection washing step which will be used to compute the loading 
+        self.area_for_loading = self.integrate([[i[1], i[2]] for i in corrected_uv_data if i[0] == self.first_depro_step]) #the area of the first deprotection peak which will be used to compute the loading 
 
         for index,step in enumerate(sorted(steps)):
             t_i = np.argwhere(temp[:, -1] == step) #find the index of a particular step number (temp[:,2] corresponds to the step number)
