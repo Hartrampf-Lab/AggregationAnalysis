@@ -15,7 +15,7 @@ import scipy
 from  sklearn.metrics import r2_score
 import matplotlib.pyplot as plt
 import pandas as pd
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 import numpy as np
 
 class InvalidSerialNumber(Exception):
