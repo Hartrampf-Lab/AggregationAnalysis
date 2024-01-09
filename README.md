@@ -16,8 +16,8 @@ conda env create -f environment.yml
 ```
 In order to be able to use the environement kernel on jupyter notebook, run the following command:
 ```bash
-conda activate dataanalysis
-python -m ipykernel install --user --name dataanalysis
+conda activate peakangle
+python -m ipykernel install --user --name peakangle
 ```
 
 ## Description of the data processing and analysis method.
