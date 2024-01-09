@@ -2,10 +2,10 @@
 #
 #
 #   AFPS Aggregation Finding Program - aggregationfinder.py
-#   Pietro Luigi Willi, Bálint Tamas, Nina Hartrampf
-#   A robust analytical method to investigate sequence dependence in flow-based peptide synthesis.
+#   A robust data analytical method to investigate sequence dependence in flow-based peptide synthesis.
+#   Bálint Tamás, Pietro Luigi Willi, Héloïse Bürgisser, Nina Hartrampf
+#   DOI: 10.1039/D3RE00494E
 #   UZH, Institute of Chemistry.
-#   11/09/2023, Zurich.
 #
 #
 ###########################################################################
