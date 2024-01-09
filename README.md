@@ -5,7 +5,7 @@ It contains the code to implement the methods and concepts introduced in our pap
 <br>
 **A robust analytical method to investigate sequence dependence in flow-based peptide synthesis** 
 <br>
-(doi: [10.1039/D3RE00494E]() 
+(DOI: [10.1039/D3RE00494E](doi.org/10.1039/D3RE00494E)) 
 <br>
 ## Conda environment
 A conda environment YML file is included in order to successfully run the code.
